@@ -11,7 +11,7 @@ Make sure you have Python 3.x installed. You can download it from [here](https:/
 1. Clone this repository to your local machine:
 
     ```
-    git clone https://github.com/yourusername/FPRS.git
+    git clone https://github.com/Wayneskie/FPRS.git
     cd FPRS
     ```
 
