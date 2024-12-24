@@ -5,14 +5,11 @@ import discord
 from discord.ext import commands
 from colorama import Fore, init
 
-# Initialize colorama
 init(autoreset=True)
 
-# Global variables
 TOKEN = ""
 bot = None
 
-# Initialize bot
 def start_bot(token):
     global bot, TOKEN
     TOKEN = token
@@ -20,12 +17,11 @@ def start_bot(token):
 
     @bot.event
     async def on_ready():
-        print(f"\nLogged in as: {bot.user}\n")
+        print(f"\nLogged {bot.user.name}\n")
         time.sleep(1)
 
     @bot.command()
     async def pfp(ctx, user: discord.User):
-        """Sends the profile picture of the mentioned user."""
         try:
             await ctx.send(user.avatar.url)
             await ctx.message.delete()
@@ -34,7 +30,6 @@ def start_bot(token):
 
     @bot.command()
     async def gay(ctx, user: discord.User):
-        """Determines if the user is gay or not."""
         try:
             result = random.choice(["Yes", "No"])
             response = f"Yes, {user.name} is gay." if result == "Yes" else f"No, {user.name} is not gay."
@@ -45,7 +40,6 @@ def start_bot(token):
 
     @bot.command()
     async def math(ctx, *, equation: str):
-        """Solves a math equation."""
         try:
             result = eval(equation)
             await ctx.send(f"The answer to {equation} is {result}")
@@ -55,7 +49,6 @@ def start_bot(token):
 
     @bot.command()
     async def spam(ctx, count: int, *, text: str):
-        """Spams a message a specified number of times."""
         try:
             if 1 <= count <= 500:
                 for _ in range(count):
@@ -68,7 +61,6 @@ def start_bot(token):
 
     @bot.command()
     async def ask(ctx, *, prompt: str):
-        """Ask a question using Huggingface's Qwen model."""
         try:
             answer = ask_huggingface(prompt)
             await ctx.send(answer)
@@ -78,7 +70,6 @@ def start_bot(token):
 
     @bot.command()
     async def help(ctx):
-        """Sends a list of available commands."""
         help_text = (
             ".pfp - Sends the profile picture of the mentioned user\n"
             ".gay - Determines if the user is gay or not\n"
@@ -93,7 +84,6 @@ def start_bot(token):
 
 
 def ask_huggingface(prompt):
-    """Uses Huggingface's Qwen model to generate a response."""
     import requests
     HUGGINGFACE_API_URL = "https://api-inference.huggingface.co/models/Qwen/Qwen2.5-Coder-32B-Instruct"
     HUGGINGFACE_API_KEY = "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"
@@ -107,7 +97,6 @@ def ask_huggingface(prompt):
         return f"Error: {e}"
 
 
-# Terminal-based UI
 def print_green(text):
     print(f"{Fore.LIGHTGREEN_EX}{text}")
 
@@ -117,7 +106,6 @@ def clear_screen():
 def start_ui():
     clear_screen()
 
-    # Display new banner using colorama
     print(F"{Fore.LIGHTGREEN_EX}███████╗██████╗ ███████╗███████╗")
     time.sleep(0.1)
     print(F"{Fore.GREEN}██╔════╝██╔══██╗██╔════╝██╔════╝")
@@ -147,5 +135,4 @@ def start_ui():
         time.sleep(1)
 
 
-# Start the UI
 start_ui()
