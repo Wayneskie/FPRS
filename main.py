@@ -69,7 +69,7 @@ def start_bot(token):
             print(f"Error: {e}")
 
     @bot.command()
-    async def cmds(ctx):
+    async def help(ctx):
         help_text = (
             ".pfp - Sends the profile picture of the mentioned user\n"
             ".gay - Determines if the user is gay or not\n"
