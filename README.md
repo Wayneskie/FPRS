@@ -38,7 +38,7 @@ Here is a list of available commands:
 - `.math <equation>` - Solves a math equation.
 - `.spam <count> <text>` - Spams a message a specified number of times.
 - `.ask <prompt>` - Ask a question using Huggingface's Qwen model.
-- `.help` - Displays this help text.
+- `.cmds` - Displays this help text.
 
 ## License
 
